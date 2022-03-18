@@ -73,15 +73,32 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
+          <!-- <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn> -->
+          <v-btn color="primary" @click="movePage(`/inspire`)"> Continue </v-btn>
+          <v-btn color="primary" @click="movePage(`/todo`)"> go to Todo </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
 </template>
 
-<script>
-export default {
-  name: 'IndexPage',
+<script lang="ts">
+import { Vue, Component} from 'nuxt-property-decorator'
+
+@Component
+export default class IndexPage extends Vue{
+  private movePage(link:string){
+    console.log(`link:${link}`)
+    this.$router.push(link)
+  }
+  // 22.03.18 
+  // router.js 가 .nuxt 폴더 내에 숨어있음  거기서 라우터 정보 알 수 있음...참고해서 라우터 기능 사용하면 된다!
+  // nuxt-property-decorator 블로그에 정리하기 (참고 : http://ccambo.github.io/Dev/Vue/6.How-to-use-vue-property-decorator/ )
+  // todo app 을 만들어보자 (참고:https://velog.io/@imyourgenie/Vue.js-Todo-App-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%ED%98%84)
+  // nuxt 공부 (참고 :https://velog.io/@nuxt/NUXT-%EA%B8%B0%EC%B4%88-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B5%AC%EC%A1%B0 )
+
 }
 </script>
+
+<style lang="scss" scoped></style>
+
